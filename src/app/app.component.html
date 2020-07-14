@@ -1,3 +1,21 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <amplify-authenticator>
+    <amplify-sign-up
+      slot="sign-up"
+      usernameAlias="email"
+      [formFields]="formFields"
+    ></amplify-sign-up>
+    <amplify-sign-in
+      header-text="My Custom Sign In Text"
+      slot="sign-in"
+    ></amplify-sign-in>
+    <amplify-sign-out></amplify-sign-out>
+  </amplify-authenticator>
+
+  <ion-button (click)="createTodo()">Add Data</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let item of todos">
+      {{ item.name }} - {{ item.description }}
+    </ion-item>
+  </ion-list>
 </ion-app>
