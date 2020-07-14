@@ -35,12 +35,6 @@ export class AppComponent {
         placeholder: "custom password placeholder",
         required: true,
       },
-      {
-        type: "phone_number",
-        label: "Custom Phone Label",
-        placeholder: "custom Phone placeholder",
-        required: false,
-      },
     ];
     this.initializeApp();
   }
