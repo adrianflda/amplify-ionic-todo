@@ -1,9 +1,9 @@
 import { Component } from "@angular/core";
-import { Platform } from "@ionic/angular";
+import { MenuController, Platform, ToastController } from "@ionic/angular";
 import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { APIService } from "./API.service";
-import { FormFieldTypes } from "@aws-amplify/ui-components";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -11,31 +11,42 @@ import { FormFieldTypes } from "@aws-amplify/ui-components";
   styleUrls: ["app.component.scss"],
 })
 export class AppComponent {
+  appPages = [
+    {
+      title: "Schedule",
+      url: "/app/tabs/schedule",
+      icon: "calendar",
+    },
+    {
+      title: "Speakers",
+      url: "/app/tabs/speakers",
+      icon: "people",
+    },
+    {
+      title: "Map",
+      url: "/app/tabs/map",
+      icon: "map",
+    },
+    {
+      title: "About",
+      url: "/app/tabs/about",
+      icon: "information-circle",
+    },
+  ];
+  loggedIn = false;
+  dark = false;
   todos: Array<any>;
-  formFields: FormFieldTypes;
-  authenticated: Boolean;
-  user: Object;
 
   constructor(
+    private menu: MenuController,
     private platform: Platform,
+    private router: Router,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
+
+    private toastCtrl: ToastController,
     private apiService: APIService
   ) {
-    this.formFields = [
-      {
-        type: "email",
-        label: "Custom email Label",
-        placeholder: "custom email placeholder",
-        required: true,
-      },
-      {
-        type: "password",
-        label: "Custom Password Label",
-        placeholder: "custom password placeholder",
-        required: true,
-      },
-    ];
     this.initializeApp();
   }
 
