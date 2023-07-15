@@ -29,7 +29,7 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^5.0.0",
     "@ionic/storage": "^2.2.0",
-    "aws-amplify": "^3.0.20",
+    "aws-amplify": "^5.3.4",
     "aws-amplify-angular": "^5.0.20",
     "rxjs": "~6.5.1",
     "tslib": "^1.10.0",
